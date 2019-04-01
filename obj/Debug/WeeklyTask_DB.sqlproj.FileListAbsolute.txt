@@ -1,0 +1,6 @@
+C:\Users\cjmco\Source\Repos\WeeklyTaskDB\bin\Debug\WeeklyTask_DB.dacpac
+C:\Users\cjmco\Source\Repos\WeeklyTaskDB\bin\Debug\WeeklyTask_DB.dll
+C:\Users\cjmco\Source\Repos\WeeklyTaskDB\bin\Debug\WeeklyTask_DB.pdb
+C:\Users\cjmco\Source\Repos\WeeklyTaskDB\obj\Debug\WeeklyTask_DB.sqlprojAssemblyReference.cache
+C:\Users\cjmco\Source\Repos\WeeklyTaskDB\obj\Debug\WeeklyTask_DB.dll
+C:\Users\cjmco\Source\Repos\WeeklyTaskDB\obj\Debug\WeeklyTask_DB.pdb
