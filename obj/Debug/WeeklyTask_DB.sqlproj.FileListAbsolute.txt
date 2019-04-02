@@ -1,6 +1,9 @@
 C:\Users\cjmco\Source\Repos\WeeklyTaskDB\bin\Debug\WeeklyTask_DB.dacpac
 C:\Users\cjmco\Source\Repos\WeeklyTaskDB\bin\Debug\WeeklyTask_DB.dll
 C:\Users\cjmco\Source\Repos\WeeklyTaskDB\bin\Debug\WeeklyTask_DB.pdb
-C:\Users\cjmco\Source\Repos\WeeklyTaskDB\obj\Debug\WeeklyTask_DB.sqlprojAssemblyReference.cache
 C:\Users\cjmco\Source\Repos\WeeklyTaskDB\obj\Debug\WeeklyTask_DB.dll
 C:\Users\cjmco\Source\Repos\WeeklyTaskDB\obj\Debug\WeeklyTask_DB.pdb
+C:\Users\cjmco\source\repos\WeeklyTaskDB\obj\Debug\Model.xml
+C:\Users\cjmco\source\repos\WeeklyTaskDB\obj\Debug\refactor.xml
+C:\Users\cjmco\source\repos\WeeklyTaskDB\obj\Debug\postdeploy.sql
+C:\Users\cjmco\source\repos\WeeklyTaskDB\obj\Debug\predeploy.sql

@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WeeklyTaskModel2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Book">
+    <Key>
+      <PropertyRef Name="ISBN" />
+    </Key>
+    <Property Name="ISBN" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" />
+    <Property Name="Year_Published" Type="int" />
+    <Property Name="Author_ID" Type="int" />
+    <Property Name="Author_First_Name" Type="nvarchar" MaxLength="30" />
+    <Property Name="Author_Last_Name" Type="nvarchar" MaxLength="30" />
+    <Property Name="Author_TFN" Type="int" />
+  </EntityType>
+  <EntityType Name="Loan">
+    <Key>
+      <PropertyRef Name="STUDENT_ID" />
+      <PropertyRef Name="ISBN" />
+    </Key>
+    <Property Name="STUDENT_ID" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="ISBN" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Loan Date" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="STUDENT_ID" />
+    </Key>
+    <Property Name="STUDENT_ID" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="First_Name" Type="nvarchar" MaxLength="30" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="30" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="12" />
+  </EntityType>
+  <Association Name="FK__Loan__ISBN__4D94879B">
+    <End Role="Book" Type="Self.Book" Multiplicity="1" />
+    <End Role="Loan" Type="Self.Loan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Book">
+        <PropertyRef Name="ISBN" />
+      </Principal>
+      <Dependent Role="Loan">
+        <PropertyRef Name="ISBN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Loan__STUDENT_ID__4E88ABD4">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="Loan" Type="Self.Loan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="STUDENT_ID" />
+      </Principal>
+      <Dependent Role="Loan">
+        <PropertyRef Name="STUDENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WeeklyTaskModel2StoreContainer">
+    <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Loan" EntityType="Self.Loan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Loan__ISBN__4D94879B" Association="Self.FK__Loan__ISBN__4D94879B">
+      <End Role="Book" EntitySet="Book" />
+      <End Role="Loan" EntitySet="Loan" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Loan__STUDENT_ID__4E88ABD4" Association="Self.FK__Loan__STUDENT_ID__4E88ABD4">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Loan" EntitySet="Loan" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

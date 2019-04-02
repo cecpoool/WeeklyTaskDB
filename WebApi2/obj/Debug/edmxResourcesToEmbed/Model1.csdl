@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WeeklyTaskModel2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Book">
+    <Key>
+      <PropertyRef Name="ISBN" />
+    </Key>
+    <Property Name="ISBN" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Year_Published" Type="Int32" />
+    <Property Name="Author_ID" Type="Int32" />
+    <Property Name="Author_First_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Author_Last_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Author_TFN" Type="Int32" />
+    <NavigationProperty Name="Loans" Relationship="Self.FK__Loan__ISBN__4D94879B" FromRole="Book" ToRole="Loan" />
+  </EntityType>
+  <EntityType Name="Loan">
+    <Key>
+      <PropertyRef Name="STUDENT_ID" />
+      <PropertyRef Name="ISBN" />
+    </Key>
+    <Property Name="STUDENT_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ISBN" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Loan_Date" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Book" Relationship="Self.FK__Loan__ISBN__4D94879B" FromRole="Loan" ToRole="Book" />
+    <NavigationProperty Name="Student" Relationship="Self.FK__Loan__STUDENT_ID__4E88ABD4" FromRole="Loan" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="STUDENT_ID" />
+    </Key>
+    <Property Name="STUDENT_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="First_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Surname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Loans" Relationship="Self.FK__Loan__STUDENT_ID__4E88ABD4" FromRole="Student" ToRole="Loan" />
+  </EntityType>
+  <Association Name="FK__Loan__ISBN__4D94879B">
+    <End Role="Book" Type="Self.Book" Multiplicity="1" />
+    <End Role="Loan" Type="Self.Loan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Book">
+        <PropertyRef Name="ISBN" />
+      </Principal>
+      <Dependent Role="Loan">
+        <PropertyRef Name="ISBN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Loan__STUDENT_ID__4E88ABD4">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="Loan" Type="Self.Loan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="STUDENT_ID" />
+      </Principal>
+      <Dependent Role="Loan">
+        <PropertyRef Name="STUDENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WeeklyTaskEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Books" EntityType="Self.Book" />
+    <EntitySet Name="Loans" EntityType="Self.Loan" />
+    <EntitySet Name="Students" EntityType="Self.Student" />
+    <AssociationSet Name="FK__Loan__ISBN__4D94879B" Association="Self.FK__Loan__ISBN__4D94879B">
+      <End Role="Book" EntitySet="Books" />
+      <End Role="Loan" EntitySet="Loans" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Loan__STUDENT_ID__4E88ABD4" Association="Self.FK__Loan__STUDENT_ID__4E88ABD4">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="Loan" EntitySet="Loans" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
